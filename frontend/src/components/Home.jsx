@@ -24,7 +24,8 @@ const Home = () => {
     "AWS/Azure/GCP", "Python", "Computer Vision", "Natural Language Processing (NLP)",
     "Swift", "Kotlin", "Flutter", "Dart", "React Native", "Firebase"
   ];
- 
+  
+  const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     const fetchResumeData = async () => {
       try {
@@ -67,11 +68,23 @@ const Home = () => {
     }));
   };
 
+  // const handleSkillClick = (index) => {
+  //   setResumeData((prevData) => {
+  //     const updatedSkills = prevData.skills.includes(index)
+  //       ? prevData.skills.filter((skill) => skill !== index) 
+  //       : [...prevData.skills, index]; 
+
+  //     return {
+  //       ...prevData,
+  //       skills: updatedSkills,
+  //     };
+  //   });
+  // };
   const handleSkillClick = (index) => {
     setResumeData((prevData) => {
       const updatedSkills = prevData.skills.includes(index)
-        ? prevData.skills.filter((skill) => skill !== index) 
-        : [...prevData.skills, index]; 
+        ? prevData.skills.filter((skill) => skill !== index)
+        : [...prevData.skills, index];
 
       return {
         ...prevData,
@@ -79,6 +92,12 @@ const Home = () => {
       };
     });
   };
+
+
+  const filteredSkills = skillsList.filter((skill) =>
+    skill.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="homeContainer">
       <div className="nav">
@@ -198,7 +217,8 @@ const Home = () => {
             
             <div>
           <label>Skills: </label>
-          <div className="skillsContainer">
+
+          {/* <div className="skillsContainer">
             {skillsList.map((skill, index) => (
               <div
                 key={index}
@@ -210,7 +230,30 @@ const Home = () => {
                 {skill}
               </div>
             ))}
+          </div> */}
+          <div className="skillsContainer">
+      <label>Select Skills</label>
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="searchInput"
+      />
+      <div className="skillsGrid">
+        {filteredSkills.map((skill, index) => (
+          <div
+            key={index}
+            className={`skillItem ${
+              resumeData.skills.includes(index) ? "selected" : ""
+            }`}
+            onClick={() => handleSkillClick(index)}
+          >
+            {skill}
           </div>
+        ))}
+      </div>
+    </div>
         </div>
             <div>
               <label>Achievements: </label>

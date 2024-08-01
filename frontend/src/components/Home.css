@@ -135,29 +135,50 @@ button[type="submit"]:hover {
     background-color: #333;
 }
 
-
-.skillsContainer {
-    margin-top: 2vh;
+   .skillsContainer {
+    /* max-width: 500px; */
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skillsContainer label {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
   }
   
   .skillsGrid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1vh;
+    gap: 10px;
   }
   
   .skillItem {
-    padding: 0.5vh 1vh;
-    background-color: #f0f0f0;
-    border-radius: 4px;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border-radius: 20px;
     cursor: pointer;
-    border: 1px solid #ccc;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
+  }
+  
+  .skillItem:hover {
+    background-color: #d1d1d1;
   }
   
   .skillItem.selected {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #45a049;
+    background-color: #45a049;
+    color: #fff;
   }
   
