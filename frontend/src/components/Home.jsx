@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
@@ -16,6 +17,14 @@ const Home = () => {
     certifications: [],
   });
 
+  const skillsList = [
+    "HTML/CSS", "JavaScript", "React.js", "Angular.js", "Bootstrap",
+    "Tailwind CSS", "Node.js", "Express.js", "RESTful API Design", "MongoDB",
+    "MySQL", "Django", "PostgreSQL", "Redis", "Docker",
+    "AWS/Azure/GCP", "Python", "Computer Vision", "Natural Language Processing (NLP)",
+    "Swift", "Kotlin", "Flutter", "Dart", "React Native", "Firebase"
+  ];
+ 
   useEffect(() => {
     const fetchResumeData = async () => {
       try {
@@ -23,7 +32,11 @@ const Home = () => {
           params: { email: location.state.id },
         });
         if (res.data.status === "success") {
-          setResumeData(res.data.user);
+          const userData = res.data.user;
+          setResumeData({
+            ...userData,
+            skills: Array.isArray(userData.skills) ? userData.skills : [],
+          });
         }
       } catch (e) {
         console.error(e);
@@ -31,6 +44,7 @@ const Home = () => {
     };
     fetchResumeData();
   }, [location.state.id]);
+  
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -53,6 +67,18 @@ const Home = () => {
     }));
   };
 
+  const handleSkillClick = (index) => {
+    setResumeData((prevData) => {
+      const updatedSkills = prevData.skills.includes(index)
+        ? prevData.skills.filter((skill) => skill !== index) 
+        : [...prevData.skills, index]; 
+
+      return {
+        ...prevData,
+        skills: updatedSkills,
+      };
+    });
+  };
   return (
     <div className="homeContainer">
       <div className="nav">
@@ -169,18 +195,23 @@ const Home = () => {
                 + Add Project
               </button>
             </div>
+            
             <div>
-              <label>Skills: </label>
-              <textarea
-                value={resumeData.skills.join(", ")}
-                onChange={(e) =>
-                  setResumeData({
-                    ...resumeData,
-                    skills: e.target.value.split(","),
-                  })
-                }
-              ></textarea>
-            </div>
+          <label>Skills: </label>
+          <div className="skillsContainer">
+            {skillsList.map((skill, index) => (
+              <div
+                key={index}
+                className={`skillItem ${
+                  resumeData.skills.includes(index) ? "selected" : ""
+                }`}
+                onClick={() => handleSkillClick(index)}
+              >
+                {skill}
+              </div>
+            ))}
+          </div>
+        </div>
             <div>
               <label>Achievements: </label>
               <textarea

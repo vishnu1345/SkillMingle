@@ -21,7 +21,7 @@ const newSchema = new mongoose.Schema({
   contact: String,
   experience: [String],
   projects: [String],
-  skills: [String],
+  skills: [Number],
   achievements: String,
   certifications: [String],
 });

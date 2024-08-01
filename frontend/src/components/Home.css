@@ -80,7 +80,6 @@
     overflow-y: auto;
 }
 
-/* New Styles for Dynamic Input System */
 .dynamicField {
     margin-bottom: 2vh;
 }
@@ -135,3 +134,30 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #333;
 }
+
+
+.skillsContainer {
+    margin-top: 2vh;
+  }
+  
+  .skillsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vh;
+  }
+  
+  .skillItem {
+    padding: 0.5vh 1vh;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+  }
+  
+  .skillItem.selected {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #45a049;
+  }
+  
