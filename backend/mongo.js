@@ -17,9 +17,15 @@ const newSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  name: String,
+  contact: String,
+  experience: [String],
+  projects: [String],
+  skills: [String],
+  achievements: String,
+  certifications: [String],
 });
 
 const collection = mongoose.model("collection", newSchema);
 
 module.exports = collection;
-

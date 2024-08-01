@@ -64,6 +64,7 @@
     height: 4vh;
     background-color: #151229;
     color: white;
+    cursor: pointer;
 }
 .input1{
     margin-bottom: 4vh;

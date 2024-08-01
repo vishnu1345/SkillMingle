@@ -65,6 +65,60 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+
+// Save resume data
+app.post("/resume", async (req, res) => {
+  const { email, name, contact, experience, projects, skills, achievements, certifications } = req.body;
+
+  console.log('Received data:', req.body); 
+
+  try {
+    const user = await collection.findOneAndUpdate(
+      { email: email },
+      {
+        $set: {
+          name: name || "",
+          contact: contact || "",
+          experience: Array.isArray(experience) ? experience : [experience],
+          projects: Array.isArray(projects) ? projects : [projects],
+          skills: Array.isArray(skills) ? skills : [skills],
+          achievements: achievements || "",
+          certifications: Array.isArray(certifications) ? certifications : [certifications],
+        },
+      },
+      { new: true, upsert: true } 
+    );
+
+    if (user) {
+      res.json({ status: "success", user });
+    } else {
+      res.json({ status: "user_not_found" });
+    }
+  } catch (e) {
+    res.json({ status: "error", message: e.message });
+  }
+});
+
+
+// Get resume data
+app.get("/resume", async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const user = await collection.findOne({ email: email });
+    if (user) {
+      res.json({ status: "success", user });
+    } else {
+      res.json({ status: "user_not_found" });
+    }
+  } catch (e) {
+    res.json({ status: "error", message: e.message });
+  }
+});
+
+
+
+
 app.listen(port, () => {
   console.log("app running ");
 });

@@ -1,0 +1,212 @@
+/*
+*{
+    margin: 0;
+    padding: 0;
+}
+.homeContainer{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+.nav{
+    width: 20%;
+    background-color: #D9D9D9;
+}
+.body{
+    width: 80%;
+}
+.nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 16vh;
+    
+}
+.nav ul li{
+    margin: 4vh;
+}
+.nav ul li a{
+    text-decoration: none;
+    color: #6A6868;
+    font-size: 1.5rem;
+}
+.body{
+    height: 100vh;
+}
+.header{
+    height: 10%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h2{
+    margin-left: 4vh;
+}
+.profilePic{
+    margin-right: 4vh;
+    display: flex;
+}
+.photo{
+    margin-right: 3vh;
+}
+
+.logout{
+    width: 5vw;
+    height: 3vh;
+    background-color: #151229;
+    color: white;
+    cursor: pointer;
+    border-radius: 2vh;
+}
+.homebg{
+    height: 20%;
+    background-image: url('../../public/Rectangle-2.png');
+}
+.mainbody{
+    background-color: antiquewhite;
+    height: 70%;
+}
+    */
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Existing Styles */
+.homeContainer {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+.nav {
+    width: 20%;
+    background-color: #D9D9D9;
+}
+
+.body {
+    width: 80%;
+    height: 100vh;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 16vh;
+}
+
+.nav ul li {
+    margin: 4vh;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #6A6868;
+    font-size: 1.5rem;
+}
+
+.header {
+    height: 10%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 {
+    margin-left: 4vh;
+}
+
+.profilePic {
+    margin-right: 4vh;
+    display: flex;
+}
+
+.photo {
+    margin-right: 3vh;
+}
+
+.logout {
+    width: 5vw;
+    height: 3vh;
+    background-color: #151229;
+    color: white;
+    cursor: pointer;
+    border-radius: 2vh;
+}
+
+.homebg {
+    height: 20%;
+    background-image: url('../../public/Rectangle-2.png');
+}
+
+.mainbody {
+    /* background-color: antiquewhite; */
+    height: 70%;
+    padding: 0vh 4vh;
+    overflow-y: auto;
+}
+
+/* New Styles for Dynamic Input System */
+.dynamicField {
+    margin-bottom: 2vh;
+}
+
+.dynamicField label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1vh;
+    display: block;
+}
+
+.dynamicInput {
+    margin-bottom: 1vh;
+}
+
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 1vh;
+    margin-top: 1vh;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.addFieldButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5vh 1vh;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1vh;
+    font-size: 1rem;
+}
+
+.addFieldButton:hover {
+    background-color: #45a049;
+}
+
+button[type="submit"] {
+    background-color: #151229;
+    color: white;
+    padding: 1vh 2vh;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 2vh;
+    font-size: 1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #333;
+}
