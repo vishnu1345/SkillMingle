@@ -1,0 +1,59 @@
+/* JobList.css */
+.job-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .job-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .company-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .job-position {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .company-name {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .job-location {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  .job-link {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: #0073b1;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .job-link:hover {
+    background-color: #005582;
+  }
+  

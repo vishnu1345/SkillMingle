@@ -116,6 +116,19 @@ app.get("/resume", async (req, res) => {
   }
 });
 
+// app.post("/extract-skills", async (req, res) => {
+//   const { jobTitle } = req.body;
+
+//   try {
+//     const response = await axios.post('http://localhost:5000/extract_skills', {
+//       job_title: jobTitle
+//     });
+
+//     res.json({ skills: response.data.skills });
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to extract skills' });
+//   }
+// });
 
 
 
