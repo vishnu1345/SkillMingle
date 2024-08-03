@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
@@ -15,6 +14,7 @@ const Home = () => {
     skills: [],
     achievements: "",
     certifications: [],
+    skillLevels: {},
   });
 
   const skillsList = [
@@ -24,19 +24,21 @@ const Home = () => {
     "AWS/Azure/GCP", "Python", "Computer Vision", "Natural Language Processing (NLP)",
     "Swift", "Kotlin", "Flutter", "Dart", "React Native", "Firebase"
   ];
-  
+
+  const skillTests = ["JavaScript", "React.js"]; 
+
   const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     const fetchResumeData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/resume", {
-          params: { email: location.state.id },
-        });
+        const res = await axios.get("http://localhost:3000/resume");
         if (res.data.status === "success") {
           const userData = res.data.user;
           setResumeData({
             ...userData,
             skills: Array.isArray(userData.skills) ? userData.skills : [],
+            skillLevels: userData.skillLevels || {}, 
           });
         }
       } catch (e) {
@@ -44,8 +46,12 @@ const Home = () => {
       }
     };
     fetchResumeData();
-  }, [location.state.id]);
-  
+  }, []);
+
+  const handleSkillTestSelect = (e) => {
+    const selectedSkill = e.target.value;
+    navigate(`/test/${selectedSkill.toLowerCase()}`);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -68,18 +74,6 @@ const Home = () => {
     }));
   };
 
-  // const handleSkillClick = (index) => {
-  //   setResumeData((prevData) => {
-  //     const updatedSkills = prevData.skills.includes(index)
-  //       ? prevData.skills.filter((skill) => skill !== index) 
-  //       : [...prevData.skills, index]; 
-
-  //     return {
-  //       ...prevData,
-  //       skills: updatedSkills,
-  //     };
-  //   });
-  // };
   const handleSkillClick = (index) => {
     setResumeData((prevData) => {
       const updatedSkills = prevData.skills.includes(index)
@@ -92,7 +86,6 @@ const Home = () => {
       };
     });
   };
-
 
   const filteredSkills = skillsList.filter((skill) =>
     skill.toLowerCase().includes(searchTerm.toLowerCase())
@@ -118,7 +111,7 @@ const Home = () => {
       </div>
       <div className="body">
         <div className="header">
-          <h2>Hello {resumeData.name || location.state.id}</h2>
+          <h2>Hello {resumeData.name || "User"}</h2>
           <div className="profilePic">
             <div className="photo">insert</div>
             <button onClick={handleLogout} className="logout">
@@ -128,9 +121,8 @@ const Home = () => {
         </div>
         <div className="homebg"></div>
         <div className="mainbody">
-         
           <form>
-            <div>
+            <div className="name">
               <label>Name: </label>
               <input
                 type="text"
@@ -140,7 +132,7 @@ const Home = () => {
                 }
               />
             </div>
-            <div>
+            <div className="contact">
               <label>Contact: </label>
               <input
                 type="text"
@@ -152,7 +144,6 @@ const Home = () => {
             </div>
             <div className="dynamicField">
               <label>Experience: </label>
-
               {Array.isArray(resumeData.experience) ? (
                 resumeData.experience.map((exp, index) => (
                   <div key={index}>
@@ -180,7 +171,6 @@ const Home = () => {
                   }
                 ></textarea>
               )}
-
               <button
                 type="button"
                 onClick={() =>
@@ -214,48 +204,50 @@ const Home = () => {
                 + Add Project
               </button>
             </div>
-            
             <div>
-          <label>Skills: </label>
-
-          {/* <div className="skillsContainer">
-            {skillsList.map((skill, index) => (
-              <div
-                key={index}
-                className={`skillItem ${
-                  resumeData.skills.includes(index) ? "selected" : ""
-                }`}
-                onClick={() => handleSkillClick(index)}
-              >
-                {skill}
+              <label>Skills: </label>
+              <div className="skillsContainer">
+                <label>Select Skills</label>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="searchInput"
+                />
+                <div className="skillsGrid">
+                  {filteredSkills.map((skill, index) => (
+                    <div
+                      key={index}
+                      className={`skillItem ${
+                        resumeData.skills.includes(index) ? "selected" : ""
+                      }`}
+                      onClick={() => handleSkillClick(index)}
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div> */}
-          <div className="skillsContainer">
-      <label>Select Skills</label>
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="searchInput"
-      />
-      <div className="skillsGrid">
-        {filteredSkills.map((skill, index) => (
-          <div
-            key={index}
-            className={`skillItem ${
-              resumeData.skills.includes(index) ? "selected" : ""
-            }`}
-            onClick={() => handleSkillClick(index)}
-          >
-            {skill}
-          </div>
-        ))}
-      </div>
-    </div>
-        </div>
-            <div>
+            </div>
+            <div className="skilltestcontainer">
+              <label>Take a Skill Test: </label>
+              <select onChange={handleSkillTestSelect} defaultValue="">
+                <option value="" disabled>Select a test</option>
+                {skillTests.map((skill, index) => (
+                  <option key={index} value={skill}>{skill}</option>
+                ))}
+              </select>
+            </div>
+            <div className="skillLevels">
+              <h3>Your Skill Levels:</h3>
+              {Object.entries(resumeData.skillLevels).map(([skill, level], index) => (
+                <div key={index}>
+                  <strong>{skill}</strong>: {level}
+                </div>
+              ))}
+            </div>
+            <div className="achievements">
               <label>Achievements: </label>
               <textarea
                 value={resumeData.achievements}
@@ -264,7 +256,7 @@ const Home = () => {
                 }
               ></textarea>
             </div>
-            <div>
+            <div className="certifications">
               <label>Certifications: </label>
               <textarea
                 value={resumeData.certifications.join(", ")}
@@ -276,13 +268,11 @@ const Home = () => {
                 }
               ></textarea>
             </div>
-
             <button
               type="submit"
               onClick={async (e) => {
                 e.preventDefault();
                 await axios.post("http://localhost:3000/resume", {
-                  email: location.state.id,
                   ...resumeData,
                 });
               }}

@@ -1,182 +1,284 @@
- * {
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+label{
+  font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 .homeContainer {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
 }
 
 .nav {
-    width: 20%;
-    background-color: #D9D9D9;
-}
-
-.body {
-    width: 80%;
-    height: 100vh;
+  width: 20%;
+  background-color: #27ae60;
+  color: white;
+  padding-top: 2rem;
 }
 
 .nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    list-style: none;
-    margin-top: 16vh;
+  list-style: none;
+  padding: 0;
 }
 
 .nav ul li {
-    margin: 4vh;
+  margin: 2rem 0;
+  text-align: center;
 }
 
 .nav ul li a {
-    text-decoration: none;
-    color: #6A6868;
-    font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  font-size: 1.25rem;
+  display: block;
+  padding: 0.5rem 0;
+  transition: background-color 0.3s;
+}
+
+.nav ul li a:hover {
+  background-color: #34495e;
+}
+
+.body {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-    height: 10%;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 20%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid black;
 }
 
 .header h2 {
-    margin-left: 4vh;
+  color: #2c3e50;
 }
 
 .profilePic {
-    margin-right: 4vh;
-    display: flex;
+  display: flex;
+  align-items: center;
 }
 
 .photo {
-    margin-right: 3vh;
+  margin-right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #bdc3c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
 }
 
 .logout {
-    width: 5vw;
-    height: 3vh;
-    background-color: #151229;
-    color: white;
-    cursor: pointer;
-    border-radius: 2vh;
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0;
 }
 
-.homebg {
-    height: 20%;
-    background-image: url('../../public/Rectangle-2.png');
+.logout:hover {
+  background-color: #c0392b;
 }
+/* 
+.homebg {
+  height: 20%;
+  background-image: url("../../public/Rectangle-2.png");
+  background-size: cover;
+  background-position: center;
+} */
 
 .mainbody {
-    height: 70%;
-    padding: 0vh 4vh;
-    overflow-y: auto;
+  /* height: 70%; */
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: #fff;
 }
 
 .dynamicField {
-    margin-bottom: 2vh;
+  margin-bottom: 2rem;
 }
 
 .dynamicField label {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1vh;
-    display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-.dynamicInput {
-    margin-bottom: 1vh;
-}
-
-textarea, input[type="text"] {
-    width: 100%;
-    padding: 1vh;
-    margin-top: 1vh;
-    box-sizing: border-box;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+.dynamicInput textarea,
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 .addFieldButton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 0.5vh 1vh;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 1vh;
-    font-size: 1rem;
+  background-color: #27ae60;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s;
 }
 
 .addFieldButton:hover {
-    background-color: #45a049;
+  background-color: #229954;
 }
 
 button[type="submit"] {
-    background-color: #151229;
-    color: white;
-    padding: 1vh 2vh;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 2vh;
-    font-size: 1rem;
+  background-color: #2980b9;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {
-    background-color: #333;
+  background-color: #1f618d;
 }
 
-   .skillsContainer {
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .skillsContainer label {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    display: block;
-  }
-  
-  .searchInput {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-  }
-  
-  .skillsGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .skillItem {
-    padding: 10px 15px;
-    background-color: #f1f1f1;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .skillItem:hover {
-    background-color: #d1d1d1;
-  }
-  
-  .skillItem.selected {
-    background-color: #45a049;
-    color: #fff;
-  }
-  
+.skillsContainer {
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skillsContainer label {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillItem {
+  padding: 0.5rem 1rem;
+  background-color: #ecf0f1;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.skillItem:hover {
+  background-color: #bdc3c7;
+}
+
+.skillItem.selected {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.skillTests,
+.skillLevels {
+  margin-bottom: 1rem;
+}
+
+.skillTests button {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.skillTests button:hover {
+  background-color: #2980b9;
+}
+
+.skillLevels ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skillLevels li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.achievements, .certifications, .skillLevels {
+  margin-bottom: 2rem;
+}
+
+.achievements label, .certifications label, .skillLevels h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.achievements textarea, .certifications textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.skillLevels div {
+  background: #ecf0f1;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.skillLevels strong {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.name , .contact , .skilltestcontainer{
+  margin-bottom: 4vh;
+}

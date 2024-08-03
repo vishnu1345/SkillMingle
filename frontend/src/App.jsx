@@ -4,6 +4,7 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import JobList from './components/Jobs';
+import Test from './components/Test';
 
 function App() {
   const router = createBrowserRouter([
@@ -26,6 +27,10 @@ function App() {
     {
       path:'/jobs',
       element: <JobList/>
+    },
+    {
+      path: '/test/:skill',
+      element: <ProtectedRoute element={<Test />} />
     }
   ]);
 
@@ -35,3 +40,4 @@ function App() {
 }
 
 export default App;
+

@@ -24,6 +24,7 @@ const newSchema = new mongoose.Schema({
   skills: [Number],
   achievements: String,
   certifications: [String],
+  skillLevels: { type: Map, of: String },
 });
 
 const collection = mongoose.model("collection", newSchema);

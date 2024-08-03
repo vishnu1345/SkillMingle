@@ -130,6 +130,26 @@ app.get("/resume", async (req, res) => {
 //   }
 // });
 
+// Update skill level
+app.post("/updateSkillLevel", async (req, res) => {
+  const { email, skill, level } = req.body;
+
+  try {
+    const user = await collection.findOneAndUpdate(
+      { email: email },
+      { $set: { [`skillLevels.${skill}`]: level } },
+      { new: true }
+    );
+
+    if (user) {
+      res.json({ status: "success", skillLevels: user.skillLevels });
+    } else {
+      res.json({ status: "user_not_found" });
+    }
+  } catch (e) {
+    res.json({ status: "error", message: e.message });
+  }
+});
 
 
 app.listen(port, () => {
