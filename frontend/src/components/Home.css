@@ -9,6 +9,7 @@ label{
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
+    color: #1D3557;
 }
 
 .homeContainer {
@@ -19,24 +20,25 @@ label{
   background-color: #f0f2f5;
 }
 
-.nav {
+.navb {
   width: 20%;
-  background-color: #27ae60;
+  background-color: #234459;
   color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
   padding-top: 2rem;
 }
 
-.nav ul {
+.navb ul {
   list-style: none;
   padding: 0;
 }
 
-.nav ul li {
+.navb ul li {
   margin: 2rem 0;
   text-align: center;
 }
 
-.nav ul li a {
+.navb ul li a {
   text-decoration: none;
   color: white;
   font-size: 1.25rem;
@@ -45,8 +47,9 @@ label{
   transition: background-color 0.3s;
 }
 
-.nav ul li a:hover {
-  background-color: #34495e;
+.navb ul li a:hover {
+  /* background-color: #34495e; */
+  background-color: #296e99;
 }
 
 .body {
@@ -57,17 +60,20 @@ label{
 
 .header {
   height: 20%;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #1D3557;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid black;
+  color: #FFFFFF;
 }
 
 .header h2 {
-  color: #2c3e50;
+  /* color: #2c3e50; */
+  color: #FFFFFF;
 }
 
 .profilePic {
@@ -77,7 +83,7 @@ label{
 
 .photo {
   margin-right: 1rem;
-  width: 3rem;
+  width: 5rem;
   height: 3rem;
   border-radius: 50%;
   background-color: #bdc3c7;
@@ -86,6 +92,9 @@ label{
   align-items: center;
   color: #fff;
   font-size: 1.5rem;
+}
+.skilltestcontainer select{
+  background-color: #F1FAEE;
 }
 
 .logout {
@@ -114,7 +123,8 @@ label{
   /* height: 70%; */
   padding: 2rem;
   overflow-y: auto;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #A8DADC ;
 }
 
 .dynamicField {
@@ -127,7 +137,20 @@ label{
   margin-bottom: 0.5rem;
   display: block;
 }
-
+textarea{
+  background-color: #F1FAEE;
+  color: #333333;
+  width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+input{
+  background-color: #F1FAEE;
+  color: #333333;
+}
 .dynamicInput textarea,
 input[type="text"] {
   width: 100%;
@@ -139,7 +162,8 @@ input[type="text"] {
 }
 
 .addFieldButton {
-  background-color: #27ae60;
+  /* background-color: #27ae60; */
+  background-color: #457B9D;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -150,7 +174,8 @@ input[type="text"] {
 }
 
 .addFieldButton:hover {
-  background-color: #229954;
+  /* background-color: #229954; */
+  background-color: #234459;
 }
 
 button[type="submit"] {
@@ -172,7 +197,8 @@ button[type="submit"]:hover {
 .skillsContainer {
   margin: 2rem auto;
   padding: 2rem;
-  background: #f9f9f9;
+  /* background: #f9f9f9; */
+  background-color:  #F1FAEE;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -200,7 +226,8 @@ button[type="submit"]:hover {
 
 .skillItem {
   padding: 0.5rem 1rem;
-  background-color: #ecf0f1;
+  /* background-color: #ecf0f1; */
+  background-color: #A8DADC;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -211,7 +238,8 @@ button[type="submit"]:hover {
 }
 
 .skillItem.selected {
-  background-color: #27ae60;
+  /* background-color: #27ae60; */
+  background-color: #1D3557;
   color: #fff;
 }
 

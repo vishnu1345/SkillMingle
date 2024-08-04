@@ -25,28 +25,48 @@ const Home = () => {
     "Swift", "Kotlin", "Flutter", "Dart", "React Native", "Firebase"
   ];
 
-  const skillTests = ["JavaScript", "React.js"]; 
+  const skillTests = ["JavaScript", "Reactjs"]; 
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  // useEffect(() => {
+  //   const fetchResumeData = async () => {
+  //     try {
+  //       const res = await axios.get("http://localhost:3000/resume");
+  //       if (res.data.status === "success") {
+  //         const userData = res.data.user;
+  //         setResumeData({
+  //           ...userData,
+  //           skills: Array.isArray(userData.skills) ? userData.skills : [],
+  //           skillLevels: userData.skillLevels || {}, 
+  //         });
+  //       }
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   };
+  //   fetchResumeData();
+  // }, []);
   useEffect(() => {
-    const fetchResumeData = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/resume");
-        if (res.data.status === "success") {
-          const userData = res.data.user;
-          setResumeData({
-            ...userData,
-            skills: Array.isArray(userData.skills) ? userData.skills : [],
-            skillLevels: userData.skillLevels || {}, 
-          });
-        }
-      } catch (e) {
-        console.error(e);
+  const fetchResumeData = async () => {
+    try {
+      const email = localStorage.getItem("userEmail"); // Assuming you store the email in localStorage after login
+      const res = await axios.get("http://localhost:3000/resume", { params: { email } });
+      if (res.data.status === "success") {
+        const userData = res.data.user;
+        setResumeData({
+          ...userData,
+          skills: Array.isArray(userData.skills) ? userData.skills : [],
+          skillLevels: userData.skillLevels || {}, 
+        });
       }
-    };
-    fetchResumeData();
-  }, []);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  fetchResumeData();
+}, []);
+
 
   const handleSkillTestSelect = (e) => {
     const selectedSkill = e.target.value;
@@ -93,7 +113,7 @@ const Home = () => {
 
   return (
     <div className="homeContainer">
-      <div className="nav">
+      <div className="navb">
         <ul>
           <li>
             <Link to="/home">Dashboard</Link>
@@ -113,7 +133,7 @@ const Home = () => {
         <div className="header">
           <h2>Hello {resumeData.name || "User"}</h2>
           <div className="profilePic">
-            <div className="photo">insert</div>
+            <div className="photo"></div>
             <button onClick={handleLogout} className="logout">
               Logout
             </button>
@@ -268,7 +288,7 @@ const Home = () => {
                 }
               ></textarea>
             </div>
-            <button
+            {/* <button
               type="submit"
               onClick={async (e) => {
                 e.preventDefault();
@@ -278,7 +298,21 @@ const Home = () => {
               }}
             >
               Save
-            </button>
+            </button> */}
+            <button
+  type="submit"
+  onClick={async (e) => {
+    e.preventDefault();
+    const email = localStorage.getItem("userEmail"); // Fetch email from localStorage
+    await axios.post("http://localhost:3000/resume", {
+      email, // Include the email here
+      ...resumeData,
+    });
+  }}
+>
+  Save
+</button>
+
           </form>
         </div>
       </div>
