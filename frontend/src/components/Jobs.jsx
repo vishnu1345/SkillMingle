@@ -142,7 +142,7 @@ const JobList = () => {
   const [skills, setSkills] = useState({});
 
   // Filter state variables
-  const [field, setField] = useState('Software Engineer');
+  const [field, setField] = useState('frontend developer');
   const [sortBy, setSortBy] = useState('');
   const [jobType, setJobType] = useState('');
   const [expLevel, setExpLevel] = useState('');
@@ -220,6 +220,7 @@ const JobList = () => {
             <option value="data scientist">Data Scientist</option>
             <option value="product manager">Product Manager</option>
             <option value="ux designer">UX Designer</option>
+            <option value="ux designer">backend developer</option>
           </select>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             <option value="">Sort By</option>
@@ -252,7 +253,7 @@ const JobList = () => {
         </div>
 
         <div className="job-list">
-          {error && <p className="error-message">{error}</p>}
+          {/* {error && <p className="error-message">{error}</p>} */}
           {jobs.length === 0 && !error ? (
             <p>Loading...</p>
           ) : (
