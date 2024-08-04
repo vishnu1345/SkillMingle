@@ -29,6 +29,46 @@ const Home = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [jobTitles, setJobTitles] = useState([]);
+
+  // const matchJobTitles = async () => {
+  //   try {
+  //     const res = await axios.post("http://localhost:3000/match-job-title", { skills: resumeData.skills });
+  //     if (res.data.status === "success") {
+  //       setJobTitles([res.data.matchingTitle]); // Wrap it in an array since you're mapping over jobTitles
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  
+  const matchJobTitles = async () => {
+    try {
+      const email = localStorage.getItem("userEmail");
+      const res = await axios.post("http://localhost:3000/match-job-title", { 
+        skills: resumeData.skills,
+        email: email // Add this line
+      });
+      if (res.data.status === "success") {
+        setJobTitles([res.data.matchingTitle]);
+  
+        // Assuming the most relevant job title is the first one
+        const mostRelevantJobTitle = res.data.matchingTitle?.title || '';
+  
+        // Navigate to Jobs page with the matched job title
+        // navigate('/jobs', { state: { matchedJobTitle: mostRelevantJobTitle } });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    if (resumeData.skills.length > 0) {
+      matchJobTitles();
+    }
+  }, [resumeData.skills]);
+
+
   // useEffect(() => {
   //   const fetchResumeData = async () => {
   //     try {
@@ -141,6 +181,15 @@ const Home = () => {
         </div>
         <div className="homebg"></div>
         <div className="mainbody">
+        {/* <div className="matchedTitles">
+  <h3>Matched Job Title:</h3>
+  {jobTitles.length > 0 && (
+    <div>
+      <strong>{jobTitles[0].title}</strong>: {jobTitles[0].matchedSkills.map(skill => skillsList[skill]).join(", ")}
+    </div>
+  )}
+</div> */}
+
           <form>
             <div className="name">
               <label>Name: </label>
