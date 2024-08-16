@@ -1,53 +1,87 @@
-SkillMingle is designed to help job seekers find job opportunities that perfectly match their resumes and skill sets
-# Project Setup and Running Instructions
+# SkillMingle
 
-## Python Model
+SkillMingle is designed to help job seekers find job opportunities that perfectly match their resumes and skill sets.
 
-To run the Python model, follow these steps:
+## Table of Contents
 
-1. Navigate to the backend directory:
+- [Prerequisites](#prerequisites)
+- [Setting up and Running the Applications](#setting-up-and-running-the-applications)
+  - [Python Model](#python-model)
+  - [Express Backend](#express-backend)
+  - [Frontend](#frontend)
+- [Additional Notes](#additional-notes)
+
+## Prerequisites
+
+Before running the application, ensure the following are installed on your system:
+
+- **Node.js and npm**: You can download and install Node.js, which includes npm, from the [official Node.js website](https://nodejs.org/). Select the appropriate installer for your operating system.
+
+- **Python**: Download and install Python from the [official Python website](https://www.python.org/downloads/). Choose the installer that matches your operating system.
+
+- **pip**: pip comes bundled with Python 3.4 and later. To verify pip is installed, run `pip --version` in your terminal or command prompt. If pip is not installed, follow the [official pip installation guide](https://pip.pypa.io/en/stable/installation/).
+
+## Setting up and Running the Applications
+
+### Python Model
+
+1. **Navigate to the backend directory**:
     ```bash
     cd backend
     ```
 
-2. Run the Python application:
+2. **Set up a virtual environment (optional but recommended)**:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. **Install the required packages**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Run the Python application**:
     ```bash
     python app.py
     ```
 
-## Express Backend
+### Express Backend
 
-To run the Express backend, follow these steps:
-
-1. Navigate to the backend directory:
+1. **Navigate to the backend directory**:
     ```bash
     cd backend
     ```
 
-2. Start the Node.js application:
+2. **Install the necessary Node.js packages**:
+    ```bash
+    npm install
+    ```
+
+3. **Start the Node.js application**:
     ```bash
     node app.js
     ```
 
-## Frontend
+### Frontend
 
-To run the frontend, follow these steps:
-
-1. Navigate to the frontend directory:
+1. **Navigate to the frontend directory**:
     ```bash
     cd frontend
     ```
 
-2. Start the development server:
+2. **Install the necessary dependencies**:
+    ```bash
+    npm install
+    ```
+
+3. **Start the development server**:
     ```bash
     npm run dev
     ```
 
 ## Additional Notes
 
-- Ensure you have all necessary dependencies installed before running the applications.
-- For the Python model, you may need to set up a virtual environment and install required packages using `pip`.
-- For the Express backend, make sure to install the necessary Node.js packages using `npm install`.
-- For the frontend, ensure all dependencies are installed by running `npm install` before starting the development server.
-
-
+- Make sure to activate the virtual environment each time you work on the Python model to ensure all dependencies are correctly resolved.
+- Check your system's environment variables to ensure Python and Node.js are correctly configured.
+- If you encounter any errors related to missing packages, rerun the `pip install` or `npm install` commands to resolve dependencies.
