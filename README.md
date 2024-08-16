@@ -15,10 +15,12 @@ SkillMingle is designed to help job seekers find job opportunities that perfectl
 
 Before running the application, ensure the following are installed on your system:
 
-- **Node.js and npm**: You can download and install Node.js, which includes npm, from the [official Node.js website](https://nodejs.org/). Select the appropriate installer for your operating system.
-
-- **Python**: Download and install Python from the [official Python website](https://www.python.org/downloads/). Choose the installer that matches your operating system.
-
+- **Node.js and npm**: You can download and install Node.js, which includes npm, from the [official Node.js website](https://nodejs.org/). Select the appropriate installer for your operating system.  
+  (To check if it is already installed or to to verify installation : Run `node -v` and `npm -v` in your terminal or command prompt )
+  
+- **Python**: Download and install Python from the [official Python website](https://www.python.org/downloads/). Choose the installer that matches your operating system.  
+  (To check if it is already installed or to to verify installation : Run `python --version` in your terminal or command prompt )
+  
 - **pip**: pip comes bundled with Python 3.4 and later. To verify pip is installed, run `pip --version` in your terminal or command prompt. If pip is not installed, follow the [official pip installation guide](https://pip.pypa.io/en/stable/installation/).
 
 ## Setting up and Running the Applications
