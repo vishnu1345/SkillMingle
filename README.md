@@ -29,8 +29,13 @@ Before running the application, ensure the following are installed on your syste
     ```bash
     cd backend
     ```
-
-2. **Run the Python application**:
+    
+2.  **Install the required packages**:
+    ```bash
+    pip install flask flask-cors torch transformers scikit-learn numpy
+    ```
+    
+3. **Run the Python application**:
     ```bash
     python app.py
     ```
