@@ -30,18 +30,7 @@ Before running the application, ensure the following are installed on your syste
     cd backend
     ```
 
-2. **Set up a virtual environment (optional but recommended)**:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. **Install the required packages**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. **Run the Python application**:
+2. **Run the Python application**:
     ```bash
     python app.py
     ```
@@ -82,6 +71,5 @@ Before running the application, ensure the following are installed on your syste
 
 ## Additional Notes
 
-- Make sure to activate the virtual environment each time you work on the Python model to ensure all dependencies are correctly resolved.
 - Check your system's environment variables to ensure Python and Node.js are correctly configured.
 - If you encounter any errors related to missing packages, rerun the `pip install` or `npm install` commands to resolve dependencies.
