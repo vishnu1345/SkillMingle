@@ -352,7 +352,7 @@ const Home = () => {
   type="submit"
   onClick={async (e) => {
     e.preventDefault();
-    const email = localStorage.getItem("userEmail"); // Fetch email from localStorage
+    const email = localStorage.getItem("userEmail"); 
     await axios.post("http://localhost:3000/resume", {
       email, // Include the email here
       ...resumeData,

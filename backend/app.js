@@ -96,6 +96,30 @@ app.post("/resume", async (req, res) => {
   }
 });
 
+app.post("/application", async (req, res) => {
+  const { email, jobTitle, company, location } = req.body;
+
+  try {
+    const user = await collection.findOneAndUpdate(
+      { email },
+      { 
+        $push: { 
+          applications: { jobTitle, company, location, date: new Date() }
+        } 
+      },
+      { new: true, upsert: true }
+    );
+
+    if (user) {
+      res.json({ status: "success", applications: user.applications });
+    } else {
+      res.status(404).json({ status: "user_not_found" });
+    }
+  } catch (error) {
+    res.status(500).json({ status: "error", message: error.message });
+  }
+});
+
 app.get("/resume", async (req, res) => {
   const { email } = req.query;
 
@@ -126,27 +150,6 @@ app.post("/extract-skills", async (req, res) => {
    }
  });
 
-// Update skill level
-
-// app.post("/updateSkillLevel", async (req, res) => {
-//   const { email, skill, level } = req.body;
-
-//   try {
-//     const user = await collection.findOneAndUpdate(
-//       { email: email },
-//       { $set: { [`skillLevels.${skill}`]: level } },
-//       { new: true }
-//     );
-
-//     if (user) {
-//       res.json({ status: "success", skillLevels: user.skillLevels });
-//     } else {
-//       res.json({ status: "user_not_found" });
-//     }
-//   } catch (e) {
-//     res.json({ status: "error", message: e.message });
-//   }
-// });
 
 app.post("/updateSkillLevel", async (req, res) => {
   const { email, skill, level } = req.body;

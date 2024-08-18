@@ -14,14 +14,14 @@ const Signup = () => {
     try {
       const res = await axios.post("http://localhost:3000/signup", {
         email,
-        password,
+        password, 
       });
 
       if (res.data === 'exist') {
         alert("User already exists");
       } else {
         alert("Signup successful");
-        navigate("/login"); // Redirect to login page
+        navigate("/login");
       }
     } catch (e) {
       alert("Wrong details");
@@ -30,30 +30,7 @@ const Signup = () => {
   };
 
   return (
-    // <div>
-    //   <h1>Signup</h1>
-    //   <form onSubmit={handleSubmit}>
-    //     <input
-    //       type="text"
-    //       name="email"
-    //       placeholder='Email'
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       required
-    //     />
-    //     <input
-    //       type="password"
-    //       name="password"
-    //       placeholder='Password'
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       required
-    //     />
-    //     <input type="submit" value="Submit" />
-    //     <br />
-    //     <p>or</p>
-    //     <br />
-    //     <Link to="/login">Login</Link>
-    //   </form>
-    // </div>
+    
     <div className="container">
       <div className="left">
         <div className="leftContainer">
