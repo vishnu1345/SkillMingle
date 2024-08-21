@@ -22,7 +22,7 @@ label{
 
 .navb {
   width: 20%;
-  background-color: #d9d9d9;
+  background-color: #050625;
   color: black;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
   padding-top: 2rem;
@@ -40,7 +40,7 @@ label{
 
 .navb ul li a {
   text-decoration: none;
-  color: #6A6868;
+  color: white;
   font-size: 1.25rem;
   display: block;
   padding: 0.5rem 0;
@@ -141,7 +141,7 @@ label{
   /* height: 70%; */
   /* border: 10px solid black; */
   width: 721px;
-  height: 350px;
+  height: 492px;
   padding: 2rem;
   overflow-y: auto;
   /* position: absolute; */
@@ -150,6 +150,8 @@ label{
   justify-self: center;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: -20vh;
 }
 
 .dynamicField {
