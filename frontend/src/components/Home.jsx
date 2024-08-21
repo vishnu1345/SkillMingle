@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Home.css";
+import image from "/Rectangle-2.png"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -171,25 +172,19 @@ const Home = () => {
       </div>
       <div className="body">
         <div className="header">
-          <h2>Hello {resumeData.name || "User"}</h2>
+          <h2>Profile</h2>
           <div className="profilePic">
             <div className="photo"></div>
-            <button onClick={handleLogout} className="logout">
+            {resumeData.name || "User"}
+            {/* <button onClick={handleLogout} className="logout">
               Logout
-            </button>
+            </button> */}
           </div>
         </div>
-        <div className="homebg"></div>
+        <div className = "rectangle2">
+          <img src={image} alt="" className="rectangle2img" />
+          </div>
         <div className="mainbody">
-        {/* <div className="matchedTitles">
-  <h3>Matched Job Title:</h3>
-  {jobTitles.length > 0 && (
-    <div>
-      <strong>{jobTitles[0].title}</strong>: {jobTitles[0].matchedSkills.map(skill => skillsList[skill]).join(", ")}
-    </div>
-  )}
-</div> */}
-
           <form>
             <div className="name">
               <label>Name: </label>
