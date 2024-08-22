@@ -110,6 +110,7 @@ label{
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 0;
+  width: 6vw;
 }
 
 .logout:hover {
@@ -190,7 +191,7 @@ input[type="text"] {
 
 .addFieldButton {
   /* background-color: #27ae60; */
-  background-color: #457B9D;
+  background-color: #1D3557;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -254,10 +255,11 @@ button[type="submit"]:hover {
 .skillItem {
   padding: 0.5rem 1rem;
   /* background-color: #ecf0f1; */
-  background-color: #A8DADC;
+  /* background-color: #A8DADC; */
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  border: 2px solid black;
 }
 
 .skillItem:hover {

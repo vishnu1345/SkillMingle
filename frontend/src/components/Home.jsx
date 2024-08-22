@@ -48,16 +48,14 @@ const Home = () => {
       const email = localStorage.getItem("userEmail");
       const res = await axios.post("http://localhost:3000/match-job-title", { 
         skills: resumeData.skills,
-        email: email // Add this line
+        email: email 
       });
       if (res.data.status === "success") {
         setJobTitles([res.data.matchingTitle]);
   
-        // Assuming the most relevant job title is the first one
         const mostRelevantJobTitle = res.data.matchingTitle?.title || '';
   
-        // Navigate to Jobs page with the matched job title
-        // navigate('/jobs', { state: { matchedJobTitle: mostRelevantJobTitle } });
+        
       }
     } catch (error) {
       console.error(error);
@@ -91,7 +89,7 @@ const Home = () => {
   useEffect(() => {
   const fetchResumeData = async () => {
     try {
-      const email = localStorage.getItem("userEmail"); // Assuming you store the email in localStorage after login
+      const email = localStorage.getItem("userEmail"); 
       const res = await axios.get("http://localhost:3000/resume", { params: { email } });
       if (res.data.status === "success") {
         const userData = res.data.user;
@@ -172,15 +170,17 @@ const Home = () => {
       </div>
       <div className="body">
         <div className="header">
-          <h2>Profile</h2>
+          {/* <h2>Profile</h2> */}
           <div className="profilePic">
             <div className="photo"></div>
             {resumeData.name || "User"}
-            {/* <button onClick={handleLogout} className="logout">
-              Logout
-            </button> */}
+            
           </div>
+          <button onClick={handleLogout} className="logout">
+              Logout
+            </button> 
         </div>
+        
         <div className = "rectangle2">
           <img src={image} alt="" className="rectangle2img" />
           </div>
