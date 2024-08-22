@@ -161,7 +161,7 @@ const Home = () => {
             <Link to="/jobs">Jobs</Link>
           </li>
           <li>
-            <Link to="/home">Applications</Link>
+            <Link to="/applications">Applications</Link>
           </li>
           <li>
             <Link to="/home">Resources</Link>

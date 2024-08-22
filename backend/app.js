@@ -120,6 +120,44 @@ app.post("/application", async (req, res) => {
   }
 });
 
+
+app.get("/applications", async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const user = await collection.findOne({ email });
+
+    if (user && user.applications) {
+      res.json({ status: "success", applications: user.applications });
+    } else {
+      res.status(404).json({ status: "not_found", message: "No applications found for this user." });
+    }
+  } catch (error) {
+    res.status(500).json({ status: "error", message: error.message });
+  }
+});
+
+app.post("/deleteApplication", async (req, res) => {
+  const { email, jobId } = req.body;
+
+  try {
+    const user = await collection.findOneAndUpdate(
+      { email },
+      { $pull: { applications: { _id: jobId } } }, 
+      { new: true }
+    );
+
+    if (user) {
+      res.json({ status: "success", applications: user.applications });
+    } else {
+      res.status(404).json({ status: "user_not_found" });
+    }
+  } catch (error) {
+    res.status(500).json({ status: "error", message: error.message });
+  }
+});
+
+
 app.get("/resume", async (req, res) => {
   const { email } = req.query;
 

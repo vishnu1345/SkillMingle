@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './JobList.css'; 
-import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -98,24 +98,10 @@ const JobList = () => {
   };
 
   return (
-    <div className='JobContainer'>
-      <nav className="navbar">
-        <h1>SkillMingle</h1>
-        <ul>
-          <li>
-            <Link to="/home">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/jobs">Jobs</Link>
-          </li>
-          <li>
-            <Link to="/home">Applications</Link>
-          </li>
-          <li>
-            <Link to="/home">Resources</Link>
-          </li>
-        </ul>
-      </nav>
+    <>
+    <Navbar/>
+        <div className='JobContainer'>
+      
       
       <div className="jobBody">
         <div className="filter-container">
@@ -194,6 +180,8 @@ const JobList = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 
