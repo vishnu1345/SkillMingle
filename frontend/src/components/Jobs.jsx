@@ -1,20 +1,18 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './JobList.css'; 
-import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [error, setError] = useState(null);
   const [skills, setSkills] = useState({});
-  const [field, setField] = useState(''); // Initialize without a value
+  const [field, setField] = useState(''); 
   const [sortBy, setSortBy] = useState('');
   const [jobType, setJobType] = useState('');
   const [expLevel, setExpLevel] = useState('');
   const [workType, setWorkType] = useState('');
-
-
+  const [appliedJobs, setAppliedJobs] = useState({}); 
 
   useEffect(() => {
     const fetchJobTitle = async () => {
@@ -26,11 +24,11 @@ const JobList = () => {
         if (response.data.status === "success" && response.data.user.matchedJobTitle) {
           setField(response.data.user.matchedJobTitle);
         } else {
-          setField('frontend developer'); // Fallback
+          setField('frontend developer'); 
         }
       } catch (error) {
         console.error("Failed to fetch job title:", error);
-        setField('frontend developer'); // Fallback
+        setField('frontend developer'); 
       }
     };
   
@@ -42,7 +40,7 @@ const JobList = () => {
       try {
         const url = "https://api.scrapingdog.com/linkedinjobs";
         const params = {
-          api_key: "66aca5c8bd5a0b0a9fdd1934",
+          api_key: "66c1e63b078c04535d82e5c0",
           field: field,
           sort_by: sortBy,
           job_type: jobType,
@@ -64,7 +62,7 @@ const JobList = () => {
       }
     };
 
-    if (field) fetchData(); // Fetch data only if field is set
+    if (field) fetchData(); 
   }, [field, sortBy, jobType, expLevel, workType]);
 
   const fetchSkills = async (jobTitle, index) => {
@@ -79,25 +77,31 @@ const JobList = () => {
     }
   };
 
+  const handleCheckboxChange = async (job, index) => {
+    const email = localStorage.getItem("userEmail");
+    
+    try {
+      const response = await axios.post('http://localhost:3000/application', {
+        email,
+        jobTitle: job.job_position,
+        company: job.company_name,
+        location: job.job_location
+      });
+
+      if (response.data.status === 'success') {
+        setAppliedJobs(prev => ({ ...prev, [index]: true }));
+        alert('Job application information saved successfully!');
+      }
+    } catch (error) {
+      console.error('Failed to save job application information:', error);
+    }
+  };
+
   return (
-    <div className='JobContainer'>
-      <nav className="navbar">
-        <h1>SkillMingle</h1>
-        <ul>
-          <li>
-            <Link to="/home">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/jobs">Jobs</Link>
-          </li>
-          <li>
-            <Link to="/home">Applications</Link>
-          </li>
-          <li>
-            <Link to="/home">Resources</Link>
-          </li>
-        </ul>
-      </nav>
+    <>
+    <Navbar/>
+        <div className='JobContainer'>
+      
       
       <div className="jobBody">
         <div className="filter-container">
@@ -153,6 +157,13 @@ const JobList = () => {
                 <p className="job-location">{job.job_location}</p>
                 <a href={job.job_link} className="job-link" target="_blank" rel="noopener noreferrer">Apply Now</a>
                 <button onClick={() => fetchSkills(job.job_position, index)}>Show Skills</button>
+                <input
+                  type="checkbox"
+                  name="applied"
+                  id="applied"
+                  checked={appliedJobs[index] || false}
+                  onChange={() => handleCheckboxChange(job, index)}
+                /> I have applied for this job.
                 {skills[index] && (
                   <div className="skills-list">
                     <h3>Relevant Skills:</h3>
@@ -169,6 +180,8 @@ const JobList = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 
