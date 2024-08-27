@@ -21,7 +21,8 @@ class SkillExtractorML:
             "backend developer": ["Node.js", "Express.js", "SQL", "NoSQL"],
             "app developer": ["Flutter", "Dart", "Swift", "Kotlin"],
             "devops engineer": ["Docker", "Kubernetes", "AWS", "Azure"],
-            "website developer": ["HTML", "CSS", "JavaScript", "React.js", "Bootstrap"]
+            "website developer": ["HTML", "CSS", "JavaScript", "React.js", "Bootstrap"],
+            "software developer":["c/c++","Java","DSA","OOPS","DBMS"]
         }
 
         self.general_skills = [
