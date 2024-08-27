@@ -17,13 +17,13 @@ label{
   height: 100vh;
   width: 100vw;
   font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+  background-color: #d9d9d9;
 }
 
 .navb {
   width: 20%;
-  background-color: #234459;
-  color: white;
+  background-color: #050625;
+  color: black;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
   padding-top: 2rem;
 }
@@ -54,26 +54,30 @@ label{
 
 .body {
   width: 80%;
-  display: flex;
+  display: grid;
   flex-direction: column;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
-  height: 20%;
+  height: 80px;
+  /* width: 1213px; */
   /* background-color: #fff; */
-  background-color: #1D3557;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid black;
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .header h2 {
   /* color: #2c3e50; */
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .profilePic {
@@ -83,7 +87,7 @@ label{
 
 .photo {
   margin-right: 1rem;
-  width: 5rem;
+  width: 3rem;
   height: 3rem;
   border-radius: 50%;
   background-color: #bdc3c7;
@@ -94,7 +98,7 @@ label{
   font-size: 1.5rem;
 }
 .skilltestcontainer select{
-  background-color: #F1FAEE;
+  background-color: white;
 }
 
 .logout {
@@ -106,25 +110,43 @@ label{
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 0;
+  width: 6vw;
 }
 
 .logout:hover {
   background-color: #c0392b;
 }
-/* 
-.homebg {
-  height: 20%;
-  background-image: url("../../public/Rectangle-2.png");
-  background-size: cover;
-  background-position: center;
-} */
+
+
+.rectangle2
+{
+  /* width: 1213px; */
+  /* height: 240px; */
+  /* border: 10px solid black; */
+  position: relative;
+}
+
+.rectangle2img
+{
+  width: 100%;
+  height: auto;
+}
 
 .mainbody {
   /* height: 70%; */
+  /* border: 10px solid black; */
+  width: 721px;
+  height: 492px;
   padding: 2rem;
   overflow-y: auto;
-  /* background-color: #fff; */
-  background-color: #A8DADC ;
+  /* position: absolute; */
+  /* top: 50px; */
+  background-color: white ;
+  justify-self: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: -20vh;
 }
 
 .dynamicField {
@@ -138,7 +160,7 @@ label{
   display: block;
 }
 textarea{
-  background-color: #F1FAEE;
+  background-color: white;
   color: #333333;
   width: 100%;
     padding: 0.5rem;
@@ -148,7 +170,7 @@ textarea{
     font-size: 1rem;
 }
 input{
-  background-color: #F1FAEE;
+  background-color: white;
   color: #333333;
 }
 .dynamicInput textarea,
@@ -163,7 +185,7 @@ input[type="text"] {
 
 .addFieldButton {
   /* background-color: #27ae60; */
-  background-color: #457B9D;
+  background-color: #1D3557;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -198,7 +220,7 @@ button[type="submit"]:hover {
   margin: 2rem auto;
   padding: 2rem;
   /* background: #f9f9f9; */
-  background-color:  #F1FAEE;
+  background-color:  white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -227,10 +249,11 @@ button[type="submit"]:hover {
 .skillItem {
   padding: 0.5rem 1rem;
   /* background-color: #ecf0f1; */
-  background-color: #A8DADC;
+  /* background-color: #A8DADC; */
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  border: 2px solid black;
 }
 
 .skillItem:hover {

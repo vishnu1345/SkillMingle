@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Home.css";
+import image from "/Rectangle-2.png"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -47,16 +48,14 @@ const Home = () => {
       const email = localStorage.getItem("userEmail");
       const res = await axios.post("http://localhost:3000/match-job-title", { 
         skills: resumeData.skills,
-        email: email // Add this line
+        email: email 
       });
       if (res.data.status === "success") {
         setJobTitles([res.data.matchingTitle]);
   
-        // Assuming the most relevant job title is the first one
         const mostRelevantJobTitle = res.data.matchingTitle?.title || '';
   
-        // Navigate to Jobs page with the matched job title
-        // navigate('/jobs', { state: { matchedJobTitle: mostRelevantJobTitle } });
+        
       }
     } catch (error) {
       console.error(error);
@@ -90,7 +89,7 @@ const Home = () => {
   useEffect(() => {
   const fetchResumeData = async () => {
     try {
-      const email = localStorage.getItem("userEmail"); // Assuming you store the email in localStorage after login
+      const email = localStorage.getItem("userEmail"); 
       const res = await axios.get("http://localhost:3000/resume", { params: { email } });
       if (res.data.status === "success") {
         const userData = res.data.user;
@@ -162,7 +161,7 @@ const Home = () => {
             <Link to="/jobs">Jobs</Link>
           </li>
           <li>
-            <Link to="/home">Applications</Link>
+            <Link to="/applications">Applications</Link>
           </li>
           <li>
             <Link to="/home">Resources</Link>
@@ -171,25 +170,21 @@ const Home = () => {
       </div>
       <div className="body">
         <div className="header">
-          <h2>Hello {resumeData.name || "User"}</h2>
+          {/* <h2>Profile</h2> */}
           <div className="profilePic">
             <div className="photo"></div>
-            <button onClick={handleLogout} className="logout">
-              Logout
-            </button>
+            {resumeData.name || "User"}
+            
           </div>
+          <button onClick={handleLogout} className="logout">
+              Logout
+            </button> 
         </div>
-        <div className="homebg"></div>
+        
+        <div className = "rectangle2">
+          <img src={image} alt="" className="rectangle2img" />
+          </div>
         <div className="mainbody">
-        {/* <div className="matchedTitles">
-  <h3>Matched Job Title:</h3>
-  {jobTitles.length > 0 && (
-    <div>
-      <strong>{jobTitles[0].title}</strong>: {jobTitles[0].matchedSkills.map(skill => skillsList[skill]).join(", ")}
-    </div>
-  )}
-</div> */}
-
           <form>
             <div className="name">
               <label>Name: </label>
@@ -352,7 +347,7 @@ const Home = () => {
   type="submit"
   onClick={async (e) => {
     e.preventDefault();
-    const email = localStorage.getItem("userEmail"); // Fetch email from localStorage
+    const email = localStorage.getItem("userEmail"); 
     await axios.post("http://localhost:3000/resume", {
       email, // Include the email here
       ...resumeData,

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import JobList from './components/Jobs';
 import Test from './components/Test';
+import Applications from './components/Applications';
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,10 @@ function App() {
     {
       path: '/test/:skill',
       element: <ProtectedRoute element={<Test />} />
+    },
+    {
+      path: '/applications',
+      element: <ProtectedRoute element={<Applications/>} />
     }
   ]);
 
