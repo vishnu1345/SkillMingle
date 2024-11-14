@@ -7,11 +7,11 @@ const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [error, setError] = useState(null);
   const [skills, setSkills] = useState({});
-  const [field, setField] = useState(''); 
-  const [sortBy, setSortBy] = useState('');
-  const [jobType, setJobType] = useState('');
-  const [expLevel, setExpLevel] = useState('');
-  const [workType, setWorkType] = useState('');
+  const [field, setField] = useState('frontend developer'); 
+  const [sortBy, setSortBy] = useState('day');
+  const [jobType, setJobType] = useState('full_time');
+  const [expLevel, setExpLevel] = useState('entry_level');
+  const [workType, setWorkType] = useState('at_work');
   const [appliedJobs, setAppliedJobs] = useState({}); 
 
   useEffect(() => {

@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import JobList from './components/Jobs';
 import Test from './components/Test';
 import Applications from './components/Applications';
+import Resources from './components/Resources';
 
 function App() {
   const router = createBrowserRouter([
@@ -36,6 +37,10 @@ function App() {
     {
       path: '/applications',
       element: <ProtectedRoute element={<Applications/>} />
+    },
+    {
+      path: '/upload-resume',
+      element: <ProtectedRoute element={<Resources/>} />
     }
   ]);
 
