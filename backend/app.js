@@ -15,9 +15,11 @@ app.use(
   })
 );
 
+
 app.get("/", (req, res) => {
   res.send("hello");
 });
+
 
 app.post("/", async (req, res) => {
   const { email, password } = req.body;
@@ -174,19 +176,19 @@ app.get("/resume", async (req, res) => {
 });
 
 
-app.post("/extract-skills", async (req, res) => {
-  const { jobTitle } = req.body;
+// app.post("/extract-skills", async (req, res) => {
+//   const { jobTitle } = req.body;
 
-  try {
-    const response = await axios.post('http://localhost:5000/extract_skills', {
-      job_title: jobTitle
-    });
+//   try {
+//     const response = await axios.post('http://localhost:5000/extract_skills', {
+//       job_title: jobTitle
+//     });
 
-    res.json({ skills: response.data.skills });
-  } catch (error) {
-     res.status(500).json({ error: 'Failed to extract skills' });
-   }
- });
+//     res.json({ skills: response.data.skills });
+//   } catch (error) {
+//      res.status(500).json({ error: 'Failed to extract skills' });
+//    }
+//  });
 
 
 app.post("/updateSkillLevel", async (req, res) => {
@@ -216,7 +218,7 @@ const jobTitles = {
   "software developer": [1, 2, 6, 7, 8, 9],
   "data scientist": [16, 17, 18, 19],
   "ui/ux developer": [0, 2, 4, 5, 23],
-  // Add more titles and corresponding skill indices here
+  
 };
 
 

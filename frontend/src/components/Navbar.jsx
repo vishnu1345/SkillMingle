@@ -17,9 +17,6 @@ function Navbar() {
           <li>
             <Link to="/applications">Applications</Link>
           </li>
-          <li>
-            <Link to="/upload-resume">Upload Resume</Link>
-          </li>
         </ul>
       </nav>
   )

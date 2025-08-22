@@ -32,16 +32,6 @@ const Home = () => {
 
   const [jobTitles, setJobTitles] = useState([]);
 
-  // const matchJobTitles = async () => {
-  //   try {
-  //     const res = await axios.post("http://localhost:3000/match-job-title", { skills: resumeData.skills });
-  //     if (res.data.status === "success") {
-  //       setJobTitles([res.data.matchingTitle]); // Wrap it in an array since you're mapping over jobTitles
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
   
   const matchJobTitles = async () => {
     try {
@@ -68,24 +58,7 @@ const Home = () => {
   }, [resumeData.skills]);
 
 
-  // useEffect(() => {
-  //   const fetchResumeData = async () => {
-  //     try {
-  //       const res = await axios.get("http://localhost:3000/resume");
-  //       if (res.data.status === "success") {
-  //         const userData = res.data.user;
-  //         setResumeData({
-  //           ...userData,
-  //           skills: Array.isArray(userData.skills) ? userData.skills : [],
-  //           skillLevels: userData.skillLevels || {}, 
-  //         });
-  //       }
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   };
-  //   fetchResumeData();
-  // }, []);
+
   useEffect(() => {
   const fetchResumeData = async () => {
     try {
@@ -162,9 +135,6 @@ const Home = () => {
           </li>
           <li>
             <Link to="/applications">Applications</Link>
-          </li>
-          <li>
-            <Link to="/upload-resume">Upload Resume</Link>
           </li>
         </ul>
       </div>
