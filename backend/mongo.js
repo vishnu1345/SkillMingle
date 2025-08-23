@@ -1,6 +1,9 @@
-const mongoose = require("mongoose")
+require("dotenv").config();
 
-mongoose.connect("mongodb://localhost:27017/techweek")
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(process.env.MONGOOSE_CONNECTION)
   .then(() => {
     console.log("mongodb connect");
   })
@@ -8,16 +11,15 @@ mongoose.connect("mongodb://localhost:27017/techweek")
     console.log("failed");
   });
 
-  const applicationSchema = new mongoose.Schema({
-    jobTitle: String,
-    company: String,
-    location: String,
-    date: {
-      type: Date,
-      default: Date.now, // Store the current date and time
-    },
-  });
-
+const applicationSchema = new mongoose.Schema({
+  jobTitle: String,
+  company: String,
+  location: String,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 const newSchema = new mongoose.Schema({
   email: {

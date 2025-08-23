@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-const port = 3000;
+
 
 const collection = require("./mongo");
 
@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:5173", 
+    // origin: "http://localhost:5173", 
+    origin: process.env.CLIENT_URL, 
     credentials: true,
   })
 );
@@ -176,21 +177,6 @@ app.get("/resume", async (req, res) => {
 });
 
 
-// app.post("/extract-skills", async (req, res) => {
-//   const { jobTitle } = req.body;
-
-//   try {
-//     const response = await axios.post('http://localhost:5000/extract_skills', {
-//       job_title: jobTitle
-//     });
-
-//     res.json({ skills: response.data.skills });
-//   } catch (error) {
-//      res.status(500).json({ error: 'Failed to extract skills' });
-//    }
-//  });
-
-
 app.post("/updateSkillLevel", async (req, res) => {
   const { email, skill, level } = req.body;
 
@@ -274,6 +260,6 @@ app.get('/getJobTitle', async (req, res) => {
 
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log("app running ");
 });
