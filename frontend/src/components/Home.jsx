@@ -4,6 +4,8 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Home.css";
 import image from "/Rectangle-2.png"
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,7 +38,7 @@ const Home = () => {
   const matchJobTitles = async () => {
     try {
       const email = localStorage.getItem("userEmail");
-      const res = await axios.post("http://localhost:3000/match-job-title", { 
+      const res = await axios.post(`${API_URL}/match-job-title`, { 
         skills: resumeData.skills,
         email: email 
       });
@@ -63,7 +65,7 @@ const Home = () => {
   const fetchResumeData = async () => {
     try {
       const email = localStorage.getItem("userEmail"); 
-      const res = await axios.get("http://localhost:3000/resume", { params: { email } });
+      const res = await axios.get(`${API_URL}/resume`, { params: { email } });
       if (res.data.status === "success") {
         const userData = res.data.user;
         setResumeData({
@@ -318,7 +320,7 @@ const Home = () => {
   onClick={async (e) => {
     e.preventDefault();
     const email = localStorage.getItem("userEmail"); 
-    await axios.post("http://localhost:3000/resume", {
+    await axios.post(`${API_URL}/resume`, {
       email, // Include the email here
       ...resumeData,
     });

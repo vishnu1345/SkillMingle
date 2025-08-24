@@ -1,37 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './JobList.css'; 
-import Navbar from './Navbar';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./JobList.css";
+import Navbar from "./Navbar";
+
+const API_URL = import.meta.env.VITE_API_URL;
+const SCRAPINGDOG_API_KEY = import.meta.env.VITE_SCRAPINGDOG_API_KEY;
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [error, setError] = useState(null);
   const [skills, setSkills] = useState({});
-  const [field, setField] = useState('frontend developer'); 
-  const [sortBy, setSortBy] = useState('day');
-  const [jobType, setJobType] = useState('full_time');
-  const [expLevel, setExpLevel] = useState('entry_level');
-  const [workType, setWorkType] = useState('at_work');
-  const [appliedJobs, setAppliedJobs] = useState({}); 
+  const [field, setField] = useState("frontend developer");
+  const [sortBy, setSortBy] = useState("day");
+  const [jobType, setJobType] = useState("full_time");
+  const [expLevel, setExpLevel] = useState("entry_level");
+  const [workType, setWorkType] = useState("at_work");
+  const [appliedJobs, setAppliedJobs] = useState({});
 
   useEffect(() => {
     const fetchJobTitle = async () => {
       try {
         const email = localStorage.getItem("userEmail");
-        const response = await axios.get('http://localhost:3000/resume', {
-          params: { email }
+        const response = await axios.get(`${API_URL}/resume`, {
+          params: { email },
         });
-        if (response.data.status === "success" && response.data.user.matchedJobTitle) {
+        if (
+          response.data.status === "success" &&
+          response.data.user.matchedJobTitle
+        ) {
           setField(response.data.user.matchedJobTitle);
         } else {
-          setField('frontend developer'); 
+          setField("frontend developer");
         }
       } catch (error) {
         console.error("Failed to fetch job title:", error);
-        setField('frontend developer'); 
+        setField("frontend developer");
       }
     };
-  
+
     fetchJobTitle();
   }, []);
 
@@ -40,19 +46,19 @@ const JobList = () => {
       try {
         const url = "https://api.scrapingdog.com/linkedinjobs";
         const params = {
-          api_key: "66c1e63b078c04535d82e5c0",
+          api_key: SCRAPINGDOG_API_KEY,
           field: field,
           sort_by: sortBy,
           job_type: jobType,
           exp_level: expLevel,
           work_type: workType,
           geoid: "102713980",
-          page: 1
+          page: 1,
         };
 
         const response = await axios.get(url, { params });
         if (response.status === 200) {
-          setJobs(response.data); 
+          setJobs(response.data);
         } else {
           setError("Request failed with status code: " + response.status);
         }
@@ -62,7 +68,7 @@ const JobList = () => {
       }
     };
 
-    if (field) fetchData(); 
+    if (field) fetchData();
   }, [field, sortBy, jobType, expLevel, workType]);
 
   // const fetchSkills = async (jobTitle, index) => {
@@ -79,21 +85,21 @@ const JobList = () => {
 
   const handleCheckboxChange = async (job, index) => {
     const email = localStorage.getItem("userEmail");
-    
+
     try {
-      const response = await axios.post('http://localhost:3000/application', {
+      const response = await axios.post(`${API_URL}/application`, {
         email,
         jobTitle: job.job_position,
         company: job.company_name,
-        location: job.job_location
+        location: job.job_location,
       });
 
-      if (response.data.status === 'success') {
-        setAppliedJobs(prev => ({ ...prev, [index]: true }));
-        alert('Job application information saved successfully!');
+      if (response.data.status === "success") {
+        setAppliedJobs((prev) => ({ ...prev, [index]: true }));
+        alert("Job application information saved successfully!");
       }
     } catch (error) {
-      console.error('Failed to save job application information:', error);
+      console.error("Failed to save job application information:", error);
     }
   };
 
@@ -176,7 +182,7 @@ const JobList = () => {
                       Apply Now
                     </a>
                     {/* <button onClick={() => fetchSkills(job.job_position, index)}>Show Skills</button> */}
-                    <div style={{display : "flex" , alignItems : "center"}}>
+                    <div style={{ display: "flex", alignItems: "center" }}>
                       <input
                         type="checkbox"
                         name="applied"

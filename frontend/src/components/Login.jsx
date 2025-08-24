@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/", {
+      const res = await axios.post(`${API_URL}/`, {
         email,
         password,
       });
@@ -36,37 +38,38 @@ const Login = () => {
     <div className="container">
       <div className="left">
         <div className="leftContainer">
-        <div className="mainHeadingdiv">
+          <div className="mainHeadingdiv">
             <h1 className="mainHeading">Login</h1>
-        </div>
-        <form onSubmit={handleSubmit} className="form">
+          </div>
+          <form onSubmit={handleSubmit} className="form">
             <div className="input1">
-        <p>Username</p>
-          <input
-            type="text"
-            name="email"
-            // placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="inputu"
-          />
-          </div>
-          <div className="input2">
-          <p>Password</p>
-          <input
-            type="password"
-            name="password"
-            // placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="input"
-          />
-          
-          </div>
-          <input type="submit" value="Login" className="loginBtn"/>
+              <p>Username</p>
+              <input
+                type="text"
+                name="email"
+                // placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="inputu"
+              />
+            </div>
+            <div className="input2">
+              <p>Password</p>
+              <input
+                type="password"
+                name="password"
+                // placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="input"
+              />
+            </div>
+            <input type="submit" value="Login" className="loginBtn" />
 
-          <p className="signup">Don't have an account? <Link to="/signup">Sign Up</Link></p>
-        </form>
+            <p className="signup">
+              Don't have an account? <Link to="/signup">Sign Up</Link>
+            </p>
+          </form>
         </div>
       </div>
       <div className="right">

@@ -3,6 +3,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,9 +12,9 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // console.log("API_URL:", API_URL); 
     try {
-      const res = await axios.post("http://localhost:3000/signup", {
+      const res = await axios.post(`${API_URL}/signup`, {
         email,
         password, 
       });
@@ -24,7 +26,7 @@ const Signup = () => {
         navigate("/login");
       }
     } catch (e) {
-      alert("Wrong details");
+      alert("Signup failed");
       console.log(e);
     }
   };
