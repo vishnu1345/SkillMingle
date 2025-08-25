@@ -73,7 +73,7 @@ const Login = () => {
         </div>
       </div>
       <div className="right">
-        <img src="../public/bg.png" alt="error" />
+        <img src="/bg.png" alt="error" />
       </div>
     </div>
   );
